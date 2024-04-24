@@ -1,0 +1,69 @@
+@model countdate.Models.DateCalculator
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css">
+    <script src="https://kit.fontawesome.com/810980a39d.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="music-player">
+            <div style="display: flex; align-items: center; justify-content: center;" >
+                <i style="font-size: 20px; margin-top: -20px; margin-right: 5px;" class="fa-solid fa-dog"></i>
+                <h1>Days Love 24/11/23</h1>
+                <i style="font-size: 20px; margin-top: -20px; margin-left: 5px;" class="fa-solid fa-piggy-bank"></i>
+            </div>
+
+
+
+            <img src="~/img/hii.jpg" alt="" class="song-img">
+            <p class="name">Phạm Quân <i class="fa-solid fa-heart" id="heart"></i> Ngọc Heo</p>
+            <div class="raw">
+                <p>Years: @Model.Years</p>
+                <p>Months: @Model.Months</p>
+                <p>Days: @Model.Days</p>
+                
+
+            </div>
+            <div style="display: flex;  justify-content: flex-end; margin-top: 90px;" class="clock" id="clock"></div>
+           
+        </div>
+
+
+    </div>
+ <script>
+        // JavaScript để cập nhật đồng hồ
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Đổi giờ 0 thành 12
+
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            document.getElementById('clock').innerText = timeString;
+        }
+
+        setInterval(updateClock, 1000); // Cập nhật đồng hồ mỗi giây
+    </script>
+    
+</body>
+
+</html>
